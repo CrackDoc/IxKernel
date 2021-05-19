@@ -19,9 +19,11 @@ FIND_PATH(IxKernel_INCLUDE_DIR KernelExport.h
     "C:/IxKernel/include"
 	"C:/Program Files/IxKernel/include"
 )
+MACRO(FIND_IxKernel_LIBRARY MYLIBRARY MYLIBRARYNAME )
 
-FIND_LIBRARY(IxKernel_LIBRARY
-NAMES "IxKernel"
+FIND_LIBRARY(${MYLIBRARY}
+    NAMES
+        ${MYLIBRARYNAME}
 PATHS
 	${IxKernel_DIR}/lib
     $ENV{IxKernel_PATH}
@@ -37,6 +39,11 @@ PATHS
     "C:/IxKernel/lib"
 	"C:/Program Files/IxKernel/lib"
 )
+ENDMACRO(FIND_IxKernel_LIBRARY LIBRARY LIBRARYNAME)
+
+FIND_IxKernel_LIBRARY(IxKernel_LIBRARY IxKernel)
+FIND_IxKernel_LIBRARY(IxKernel_LIBRARY_DEBUG IxKerneld)
+
 SET(IxKernel_FOUND FALSE)
 IF (IxKernel_INCLUDE_DIR AND IxKernel_LIBRARY)
    SET(IxKernel_FOUND TRUE)
