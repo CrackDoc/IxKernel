@@ -7,7 +7,7 @@
 #ifndef EventObject_h__
 #define EventObject_h__
 
-#include "KernelExport.h"
+#include "IxKernelExport.h"
 #include "ThreadEvent.h"
 
 class KERNEL_EXPORT CEventObject

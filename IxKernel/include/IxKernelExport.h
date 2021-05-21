@@ -1,5 +1,5 @@
-#ifndef KernelExport_h__
-#define KernelExport_h__
+#ifndef IxKernelExport_h__
+#define IxKernelExport_h__
 
 
 #if defined(WIN32)
@@ -17,4 +17,4 @@
 #define KERNEL_EXPORT 
 #endif
 
-#endif // KernelExport_h__
+#endif // IxKernelExport_h__

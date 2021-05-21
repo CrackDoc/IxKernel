@@ -8,7 +8,7 @@
 #pragma once
 //#include <QEvent>
 //#include "EventObject.h"
-//#include "KernelExport.h"
+//#include "IxKernelExport.h"
 //
 //class KERNEL_EXPORT CDropEventObject : public CEventObject
 //{

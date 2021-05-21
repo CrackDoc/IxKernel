@@ -12,8 +12,6 @@
 #ifndef _LIBRARY_H_
 #define _LIBRARY_H_
 
-#include "SystemExport.h"
-
 #ifdef WIN32
 #	include <windows.h>
 	typedef HMODULE LibraryHandle;
@@ -34,7 +32,7 @@
 * @brief 动态库动态加载类
 * @note  
 */
-class SYSTEM_EXPORT CLibrary
+class CLibrary
 {
 public:
 	/**

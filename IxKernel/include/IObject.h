@@ -8,7 +8,7 @@
 #ifndef IObject_h__
 #define IObject_h__
 #include <string>
-#include "KernelExport.h"
+#include "IxKernelExport.h"
 
 #define CAS_META_OBJECT() \
 public:\

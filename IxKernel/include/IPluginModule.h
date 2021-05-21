@@ -2,7 +2,7 @@
 #define IPluginModule_h__
 
 #include "IModule.h"
-#include "KernelExport.h"
+#include "IxKernelExport.h"
 
 class IPlugin;
 class CLibrary;
