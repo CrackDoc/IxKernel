@@ -1,4 +1,5 @@
 #include "UnitCMake_Project.h"
+#include "PluginModule.h"
 
 BEGIN_IMPLEMENT_TEST(UnitCMake_Project)
 ADD_TEST_FUNCTION(Test)

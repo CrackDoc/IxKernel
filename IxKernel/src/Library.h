@@ -12,21 +12,7 @@
 #ifndef _LIBRARY_H_
 #define _LIBRARY_H_
 
-#ifdef WIN32
-#	include <windows.h>
-	typedef HMODULE LibraryHandle;
-#elif defined __linux__
-#	include <dlfcn.h>
-	typedef void* LibraryHandle;
-#elif defined VXWORKS
-#	ifdef REWORKS
-#		include "symtbl.h"
-#	else
-#		include "moduleLib.h"
-#	endif
-	typedef MODULE_ID LibraryHandle;
-#endif
-
+typedef void* LibraryHandle;
 /**
 * @class CLibrary
 * @brief 动态库动态加载类

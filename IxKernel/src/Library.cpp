@@ -6,6 +6,12 @@
 #include "XDir.h"
 #include "XFile.h"
 
+#ifdef WIN32
+#include <windows.h>
+#elif defined __linux__
+#include <dlfcn.h>
+#endif
+
 using std::locale; 
 
 CLibrary::CLibrary( const char* strFileName /*= ""*/ ):
@@ -25,8 +31,8 @@ CLibrary::~CLibrary(void)
 {
 #ifdef WIN32
 	if(m_hHandle != NULL)
-	{
-		FreeLibrary(m_hHandle);
+	{	
+		FreeLibrary((HMODULE)m_hHandle);
 		m_hHandle = NULL;
 	}
 #elif defined __linux__
@@ -54,7 +60,7 @@ bool CLibrary::Load()
 	 m_hHandle = dlopen(m_strFilePath.c_str(), RTLD_LAZY );
 #elif defined VXWORKS
 #endif
-	m_IsSucc = (m_hHandle == NULL)?false:true;
+	m_IsSucc = (m_hHandle == nullptr)?false:true;
 	locale::global(loc);
 	return m_IsSucc;
 }
@@ -67,7 +73,7 @@ bool CLibrary::Unload()
 void* CLibrary::Resolve( const char* strSymbol )
 {
 #ifdef WIN32
-	return (void *)GetProcAddress(m_hHandle, strSymbol);
+	return (void *)GetProcAddress((HMODULE)m_hHandle, strSymbol);
 #elif defined __linux__
 	return dlsym(m_hHandle,strSymbol.c_str());
 #elif defined VXWORKS
@@ -85,7 +91,7 @@ void* CLibrary::Resolve( const char* strFileName,const char* strSymbol )
 	MultiByteToWideChar(0, 0, szTmp, _MAX_PATH, (LPWSTR)wLocation, _MAX_PATH * 2);   
 	handle  = LoadLibrary(wLocation);
 	locale::global(loc);
-	return (void *)GetProcAddress(handle, strSymbol);
+	return (void *)GetProcAddress((HMODULE)handle, strSymbol);
 #elif defined __linux__
 	handle = LoadLibrary(wLocation);
 	dlopen(strFileName.c_str(), RTLD_LAZY );

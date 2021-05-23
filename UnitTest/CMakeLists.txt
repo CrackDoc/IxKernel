@@ -51,6 +51,38 @@ link_directories(${MODULE_PATH}/lib)
 
 target_link_libraries(${CURRENT_FOLDER} ${MODULE_FOLDER})
 
+find_package(pthread)
+if(pthread_FOUND)
+	include_directories(${pthread_DIR}/include)
+	link_directories(${pthread_DIR}/lib)
+	target_link_libraries(${CURRENT_FOLDER} general ${pthread_LIBRARY})
+endif(pthread_FOUND)
+
+find_package(IxPublic)
+if(IxPublic_FOUND)
+	include_directories(${IxPublic_DIR}/include)
+	link_directories(${IxPublic_DIR}/lib)
+	target_link_libraries(${CURRENT_FOLDER} debug ${IxPublic_LIBRARY_DEBUG})
+	target_link_libraries(${CURRENT_FOLDER} optimized ${IxPublic_LIBRARY})
+endif(IxPublic_FOUND)
+
+find_package(ExtendStructure)
+if(ExtendStructure_FOUND)
+	include_directories(${ExtendStructure_DIR}/include)
+	link_directories(${ExtendStructure_DIR}/lib)
+	target_link_libraries(${CURRENT_FOLDER} debug ${ExtendStructure_LIBRARY_DEBUG})
+	target_link_libraries(${CURRENT_FOLDER} optimized ${ExtendStructure_LIBRARY})
+	
+endif(ExtendStructure_FOUND)
+
+find_package(IxSystem)
+if(IxSystem_FOUND)
+	include_directories(${IxSystem_DIR}/include)
+	link_directories(${IxSystem_DIR}/lib)
+	target_link_libraries(${CURRENT_FOLDER} debug ${IxSystem_LIBRARY_DEBUG})
+	target_link_libraries(${CURRENT_FOLDER} optimized ${IxSystem_LIBRARY})
+endif(IxSystem_FOUND)
+
 
 #-----------------TODO 执行外部命令
 #set(THRIFT_FILE ${CMAKE_CURRENT_SOURCE_DIR}/mythrift.thrift)

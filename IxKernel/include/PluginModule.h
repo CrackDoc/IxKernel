@@ -2,7 +2,7 @@
 #define PluginModule_h__
 
 #include "IPluginModule.h"
-#include "IxSystemExport.h"
+#include "IxKernelExport.h"
 #include "ThreadEvent.h"
 
 typedef IPlugin* (*FuncCreatePlugin)();
