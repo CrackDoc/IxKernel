@@ -86,7 +86,7 @@ void* CLibrary::Resolve( const char* strFileName,const char* strSymbol )
 	static LibraryHandle handle = NULL;
 #ifdef WIN32
 	char szTmp[_MAX_PATH]; 
-	strcpy(szTmp,strFileName);
+	strcpy_s(szTmp,strFileName);
 	TCHAR wLocation[_MAX_PATH] = { 0 }; 
 	MultiByteToWideChar(0, 0, szTmp, _MAX_PATH, (LPWSTR)wLocation, _MAX_PATH * 2);   
 	handle  = LoadLibrary(wLocation);
